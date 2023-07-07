@@ -1,0 +1,63 @@
+﻿@model List<StaffViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+ 
+
+ <h4>Personel Listesi</h4>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr class="thead-dark">
+            <th scope="col">#</th>
+            <th scope="col">Adı Soyadı</th>
+            <th scope="col">Ünvan</th>
+            <th scope="col">Sosyal Medya</th>
+            <th scope="col">Güncelle</th>
+            <th scope="col">Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.StaffID</th>
+                <td>@item.Name</td>
+                <td>@item.Title</td>
+                <td>
+                    <a href="@item.SocialMedia1"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="@item.SocialMedia2"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="@item.SocialMedia3"><i class="fa-brands fa-instagram"></i></a>
+                </td>
+                <td><a href="/Staff/UpdateStaff/@item.StaffID" class="btn btn-outline-primary">Güncelle</a></td>
+                <td><a href="/Staff/DeleteStaff/@item.StaffID" class="btn btn-outline-danger">Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<button class="btn btn-info" data-toggle="modal" data-target="#modal1">Yeni Personel Ekle</button>
+<div class="modal" id="modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"> 
+                <h2 class="modal-title">Yeni Personel Ekleme Paneli</h2>
+            </div>
+            <form method="post" action="/Staff/AddStaff">
+                <div class="modal-body">
+                    <label>Adı Soyadı</label>
+                    <input type="text" required name="Name" class="form-control" />
+                    <label>Ünvan</label>
+                    <input type="text" required name="Title" class="form-control" />
+                    <label>Facebook Adresi</label>
+                    <input type="text" required name="SocialMedia1" class="form-control" />
+                    <label>Twitter Adresi</label>
+                    <input type="text" required name="SocialMedia2" class="form-control" />
+                    <label>Instagram Adresi</label>
+                    <input type="text" required name="SocialMedia3" class="form-control" />
+                    <br />
+                    <button class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

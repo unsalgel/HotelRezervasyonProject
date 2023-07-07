@@ -1,0 +1,170 @@
+﻿@model CreateNewUserDto
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Otel Giriş Paneli</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/theme/assets/images/favicon.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="~/theme/css/style.css" rel="stylesheet">
+</head>
+<body class="h-100">
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+    <div class="login-form-bg h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100">
+                <div class="col-xl-6">
+                    <div class="form-input-content">
+                        <div class="card login-form mb-0">
+                            <div class="card-body pt-5">
+                                <a class="text-center" href="~/theme/index.html"> <h4>Otel Giriş Paneli</h4></a>
+                                <form method="post" class="mt-5 mb-5 login-input">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Adınız" asp-for="Name">
+                                        <span asp-validation-for="Name" class="text-warning"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Soyadınızı giriniz" asp-for="SurName">
+                                        <span asp-validation-for="SurName" class="text-warning"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Kullanıcı Adı giriniz" asp-for="UserName">
+                                        <span asp-validation-for="UserName" class="text-warning"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Mail Adresi giriniz" asp-for="Mail">
+                                        <span asp-validation-for="Mail" class="text-warning"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Şifreyi giriniz" asp-for="Password">
+                                        <span asp-validation-for="Password" class="text-warning"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Şifreyi tekrar giriniz" asp-for="PasswordConfirm">
+                                        <span asp-validation-for="PasswordConfirm" class="text-warning"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <select id="search" asp-for="City" class="form-control">
+                                            <option>Şehir Seçiniz...</option>
+                                            <option value="Adana">Adana</option>
+                                            <option value="Adıyaman">Adıyaman</option>
+                                            <option value="Afyonkarahisar">Afyonkarahisar</option>
+                                            <option value="Ağrı">Ağrı</option>
+                                            <option value="Amasya">Amasya</option>
+                                            <option value="Ankara">Ankara</option>
+                                            <option value="Antalya">Antalya</option>
+                                            <option value="Artvin">Artvin</option>
+                                            <option value="Aydın">Aydın</option>
+                                            <option value="Balıkesir">Balıkesir</option>
+                                            <option value="Bilecik">Bilecik</option>
+                                            <option value="Bingöl">Bingöl</option>
+                                            <option value="Bitlis">Bitlis</option>
+                                            <option value="Bolu">Bolu</option>
+                                            <option value="Burdur">Burdur</option>
+                                            <option value="Bursa">Bursa</option>
+                                            <option value="Çanakkale">Çanakkale</option>
+                                            <option value="Çankırı">Çankırı</option>
+                                            <option value="Çorum">Çorum</option>
+                                            <option value="Denizli">Denizli</option>
+                                            <option value="Diyarbakır">Diyarbakır</option>
+                                            <option value="Edirne">Edirne</option>
+                                            <option value="Elazığ">Elazığ</option>
+                                            <option value="Erzincan">Erzincan</option>
+                                            <option value="Erzurum">Erzurum</option>
+                                            <option value="Eskişehir">Eskişehir</option>
+                                            <option value="Gaziantep">Gaziantep</option>
+                                            <option value="Giresun">Giresun</option>
+                                            <option value="Gümüşhane">Gümüşhane</option>
+                                            <option value="Hakkâri">Hakkâri</option>
+                                            <option value="Hatay">Hatay</option>
+                                            <option value="Isparta">Isparta</option>
+                                            <option value="Mersin">Mersin</option>
+                                            <option value="İstanbul">İstanbul</option>
+                                            <option value="İzmir">İzmir</option>
+                                            <option value="Kars">Kars</option>
+                                            <option value="Kastamonu">Kastamonu</option>
+                                            <option value="Kayseri">Kayseri</option>
+                                            <option value="Kırklareli">Kırklareli</option>
+                                            <option value="Kırşehir">Kırşehir</option>
+                                            <option value="Kocaeli">Kocaeli</option>
+                                            <option value="Konya">Konya</option>
+                                            <option value="Kütahya">Kütahya</option>
+                                            <option value="Malatya">Malatya</option>
+                                            <option value="Manisa">Manisa</option>
+                                            <option value="Kahramanmaraş">Kahramanmaraş</option>
+                                            <option value="Mardin">Mardin</option>
+                                            <option value="Muğla">Muğla</option>
+                                            <option value="Muş">Muş</option>
+                                            <option value="Nevşehir">Nevşehir</option>
+                                            <option value="Niğde">Niğde</option>
+                                            <option value="Ordu">Ordu</option>
+                                            <option value="Rize">Rize</option>
+                                            <option value="Sakarya">Sakarya</option>
+                                            <option value="Samsun">Samsun</option>
+                                            <option value="Siirt">Siirt</option>
+                                            <option value="Sinop">Sinop</option>
+                                            <option value="Sivas">Sivas</option>
+                                            <option value="Tekirdağ">Tekirdağ</option>
+                                            <option value="Tokat">Tokat</option>
+                                            <option value="Trabzon">Trabzon</option>
+                                            <option value="Tunceli">Tunceli</option>
+                                            <option value="Şanlıurfa">Şanlıurfa</option>
+                                            <option value="Uşak">Uşak</option>
+                                            <option value="Van">Van</option>
+                                            <option value="Yozgat">Yozgat</option>
+                                            <option value="Zonguldak">Zonguldak</option>
+                                            <option value="Aksaray">Aksaray</option>
+                                            <option value="Bayburt">Bayburt</option>
+                                            <option value="Karaman">Karaman</option>
+                                            <option value="Kırıkkale">Kırıkkale</option>
+                                            <option value="Batman">Batman</option>
+                                            <option value="Şırnak">Şırnak</option>
+                                            <option value="Bartın">Bartın</option>
+                                            <option value="Ardahan">Ardahan</option>
+                                            <option value="Iğdır">Iğdır</option>
+                                            <option value="Yalova">Yalova</option>
+                                            <option value="Karabük">Karabük</option>
+                                            <option value="Kilis">Kilis</option>
+                                            <option value="Osmaniye">Osmaniye</option>
+                                            <option value="Düzce">Düzce</option>
+                                        </select>
+                                     </div>
+                                    <button class="btn login-form__btn submit w-100">Kayıt ol</button>
+                                </form>
+                                <p class="mt-5 login-form__footer">Bir hesabın var mı ? <a href="/Login/Index/" class="text-primary">Giriş Yap </a> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="~/theme/plugins/common/common.min.js"></script>
+    <script src="~/theme/js/custom.min.js"></script>
+    <script src="~/theme/js/settings.js"></script>
+    <script src="~/theme/js/gleek.js"></script>
+    <script src="~/theme/js/styleSwitcher.js"></script>
+</body>
+</html>

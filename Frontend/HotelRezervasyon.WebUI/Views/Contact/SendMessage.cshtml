@@ -1,0 +1,112 @@
+﻿<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title text-center text-primary text-uppercase">Bize Ulaşın</h6>
+            <h1 class="mb-5"><span class="text-primary text-uppercase">TÜM SORULARINIZ İÇİN</span> BİZE YAZABİLİRSİNİZ</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="row gy-4">
+                    <div class="col-md-4">
+                        <h6 class="section-title text-start text-primary text-uppercase">Rezervasyon</h6>
+                        <p><i class="fa fa-envelope-open text-primary me-2"></i>book@example.com</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="section-title text-start text-primary text-uppercase">Genel Sorularınız</h6>
+                        <p><i class="fa fa-envelope-open text-primary me-2"></i>info@example.com</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="section-title text-start text-primary text-uppercase">İş Başvurusu</h6>
+                        <p><i class="fa fa-envelope-open text-primary me-2"></i>ik@example.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 wow fadeIn" data-wow-delay="0.1s">
+                <iframe class="position-relative rounded w-100 h-100"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50013.55301421977!2d27.129160950000003!3d38.421899100000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbd8e2fece48eb%3A0xafa58b890c33632a!2zS29uYWsvxLB6bWly!5e0!3m2!1str!2str!4v1681745995101!5m2!1str!2str"
+                        frameborder="0" style="min-height: 350px; border:0;" allowfullscreen="" aria-hidden="false"
+                        tabindex="0"></iframe>
+            </div>
+            <div class="col-md-6">
+                <div class="wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="FullName" placeholder="İsminizi ve Soyisminizi girin..">
+                                <label for="FullName">İsim & Soyisim</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="Mail" placeholder="Mail adresinizi giriniz..">
+                                <label for="Mail">Mail Adresi</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="Subject" placeholder="Konu">
+                                <label for="Subject">Konu</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Mesajınızı giriniz" id="Message" style="height: 150px"></textarea>
+                                <label for="Message">Mesajınız</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" id="btnadd" type="submit">Gönder</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bildirim paneli için -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.js"></script>
+<!-- Bildirim paneli için -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    //Ekleme kısmı
+    $("#btnadd").click(function () {
+        var FullName = $("#FullName").val().trim();
+        var Mail = $("#Mail").val().trim();
+        var Subject = $("#Subject").val().trim();
+        var Message = $("#Message").val().trim();
+        if (FullName === "" || Mail === "" || Subject==="" || Message ==="") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata',
+                text: 'Lütfen formu eksiksiz doldurun.'
+            });
+            return;
+        }
+        var values = {
+            FullName: FullName,
+            Mail: Mail,
+            Subject: Subject,
+            Message: Message,
+        };
+        $.ajax({
+            type: "POST",
+            url: "/Contact/SendMessage/",
+            data: values,
+            success: function (fnk) {
+                var result = jQuery.parseJSON(fnk);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Başarılı',
+                    text: result.FullName + ', Mesajınızı aldık en kısa sürede dönüş sağlayacağız mail adresinizi kontrol etmeyi unutmayın.'
+                });
+                $("#FullName").val("");
+                $("#Mail").val("");
+                $("#Message").val("");
+                $("#Subject").val("");
+            }
+        });
+    });
+</script>

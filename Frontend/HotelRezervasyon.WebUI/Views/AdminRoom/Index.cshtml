@@ -1,0 +1,71 @@
+﻿@model List<ResultRoomDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+<h4>Odalar</h4>
+<div class="row">
+    <div class="col-12 m-b-30">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-3">
+                    <div class="card">
+                        <img class="img-fluid" src="@item.RoomCoverImage" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Title</h5>
+                            <p class="card-text">@item.Description</p>
+                            <p class="card-text">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6 text-left">
+                                            <div><a href="/AdminRoom/DeleteRoom/@item.RoomID"><i class="fa fa-trash" aria-hidden="true"></i></a></div>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <div><a href="/AdminRoom/UpdateRoom/@item.RoomID"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<button class="btn btn-info" data-toggle="modal" data-target="#modal1">Yeni Oda Ekle</button>
+<div class="modal" id="modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Yeni Oda Ekleme Paneli</h2>
+            </div>
+            <form method="post" enctype="multipart/form-data" asp-controller="AdminRoom" asp-action="AddRoom">
+                <div class="modal-body">
+                    <label>Oda Numarası</label>
+                    <input type="number" required name="RoomNumber" min="1" max="99999" class="form-control" />
+                    <label for="RoomCoverImage">Resim</label>
+                    <input type="file" class="form-control" id="RoomCoverImage" name="RoomCoverImage">
+                    <label>Başlık</label>
+                    <input type="text" required name="Title" class="form-control" />
+                    <label>Yatak Sayısı</label>
+                    <input type="number" required name="BedCount" min="1" max="6" class="form-control" />
+                    <label>Banyo Sayısı</label>
+                    <input type="number" required name="BathCount" min="1" max="3" class="form-control" />
+                    <label>Wifi</label>
+                    <select class="form-control" name="Wifi">
+                        <option value="var">Var</option>
+                        <option value="yok">Yok</option>
+                    </select>
+                    <label>Açıklama</label>
+                    <textarea class="form-control" name="Description"></textarea>
+                    <label>Fiyat</label>
+                    <input type="number" required name="Price" min="1" max="99999" class="form-control" />
+                    <br />
+                    <button class="btn btn-primary">Oda Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

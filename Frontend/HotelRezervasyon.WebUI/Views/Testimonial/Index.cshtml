@@ -1,0 +1,55 @@
+﻿@model List<TestimonialViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h4>Referanslar</h4>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr class="thead-dark">
+            <th scope="col">#</th>
+            <th scope="col">Resim</th>
+            <th scope="col">Adı Soyadı</th>
+            <th scope="col">Ünvanı</th>
+            <th scope="col">Güncelle</th>
+            <th scope="col">Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th><img src="@item.Image" /></th>
+                <th>@item.TestimonialID</th>
+                <td>@item.Name</td>
+                <td>@item.Title</td>
+                <td><a href="/Testimonial/UpdateTestimonial/@item.TestimonialID" class="btn btn-outline-primary">Güncelle</a></td>
+                <td><a href="/Testimonial/DeleteTestimonial/@item.TestimonialID" class="btn btn-outline-danger">Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<button class="btn btn-info" data-toggle="modal" data-target="#modal1">Yeni Referans Ekle</button>
+<div class="modal" id="modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Yeni Referans Ekleme Paneli</h2>
+            </div>
+            <form method="post" action="/Testimonial/AddTestimonial">
+                <div class="modal-body">
+                    <label>Adı Soyadı</label>
+                    <input type="text" required name="Name" class="form-control" />
+                    <label>Başlık</label>
+                    <input type="text" required name="Title" class="form-control" />
+                    <label>Açıklama</label>
+                    <textarea type="text" required name="Description" class="form-control" ></textarea>
+                    <br />
+                    <button class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

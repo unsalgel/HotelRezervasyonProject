@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\HotelRezervasyon.WebUI.props" />
+</Project>

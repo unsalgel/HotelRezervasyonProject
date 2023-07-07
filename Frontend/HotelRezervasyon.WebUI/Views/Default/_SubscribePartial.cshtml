@@ -1,0 +1,49 @@
+﻿<div class="container newsletter mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 border rounded p-1">
+            <div class="border rounded text-center p-1">
+                <div class="bg-white rounded text-center p-5">
+                    <h4 class="mb-4">Bültenimize <span class="text-primary text-uppercase">Abone Olun</span></h4>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <input class="form-control w-100 py-3 ps-4 pe-5" id="inptmail" type="email" placeholder="Mail Adresinizi giriniz">
+                        <button id="btnaddmailbulten" class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">Abone Ol</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#btnaddmailbulten").click(function () {
+        var email = $("#inptmail").val().trim();
+        if (email === "") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata!',
+                text: 'Lütfen geçerli bir e-posta adresi giriniz.'
+            });
+            return;
+        }
+        var values = {
+            Mail: email
+        };
+        $.ajax({
+            type: "POST",
+            url: "/Default/_SubscribePartial/",
+            data: values,
+            success: function (fnk) {
+                var result = jQuery.parseJSON(fnk);
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Bilgi!',
+                    text: result.Mail + ' Bültenimize Abone Olduğunuz için teşekkürler.'
+                });
+                $("#inptmail").val("");
+            }
+        });
+    });
+</script>
+

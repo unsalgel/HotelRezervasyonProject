@@ -1,0 +1,35 @@
+﻿@model UpdateRoomDto
+@{
+    ViewData["Title"] = "UpdateRoom";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h4>Oda Güncelleme Paneli</h4>
+
+<form method="post" enctype="multipart/form-data" asp-controller="AdminRoom" asp-action="UpdateRoom">
+    <input type="number" hidden required name="RoomID" asp-for="RoomID" min="1" max="99999" class="form-control" />
+
+    <div class="modal-body">
+        <label>Oda Numarası</label>
+        <input type="number" required name="RoomNumber" asp-for="RoomNumber" min="1" max="99999" class="form-control" />
+        <label for="RoomCoverImage">Resim</label>
+        <input type="file" class="form-control" id="RoomCoverImage" value="RoomCoverImage" asp-for="RoomCoverImage" name="RoomCoverImage">
+        <label>Başlık</label>
+        <input type="text" required name="Title" asp-for="Title" class="form-control" />
+        <label>Yatak Sayısı</label>
+        <input type="number" required name="BedCount" asp-for="BedCount" min="1" max="6" class="form-control" />
+        <label>Banyo Sayısı</label>
+        <input type="number" required name="BathCount" asp-for="BathCount" min="1" max="3" class="form-control" />
+        <label>Wifi</label>
+        <select class="form-control" asp-for="Wifi" name="Wifi">
+            <option value="var">Var</option>
+            <option value="yok">Yok</option>
+        </select>
+        <label>Açıklama</label>
+        <textarea class="form-control" asp-for="Description" name="Description"></textarea>
+        <label>Fiyat</label>
+        <input type="number" required asp-for="Price" name="Price" min="1" max="99999" class="form-control" />
+        <br />
+        <button class="btn btn-primary">Oda Güncelle</button>
+    </div>
+</form>

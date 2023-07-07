@@ -1,0 +1,190 @@
+﻿<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title text-center text-primary text-uppercase">Rezervasyon Paneli</h6>
+            <h1 class="mb-5">Hemen bir <span class="text-primary text-uppercase">oda rezerve et</span></h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-6 text-end">
+                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="~/hoteltema/img/about-1.jpg" style="margin-top: 25%;">
+                    </div>
+                    <div class="col-6 text-start">
+                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s" src="~/hoteltema/img/about-2.jpg">
+                    </div>
+                    <div class="col-6 text-end">
+                        <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s" src="~/hoteltema/img/about-3.jpg">
+                    </div>
+                    <div class="col-6 text-start">
+                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s" src="~/hoteltema/img/about-4.jpg">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="name" placeholder="İsim ve Soyisim Giriniz...">
+                                <label for="name">İsminiz & Soyisminiz</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="email" placeholder="Email Giriniz...">
+                                <label for="email">Email Adresiniz</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating date" id="date3" data-target-input="nearest">
+                                <input type="datetime-local" class="form-control" id="checkin" name="birthdaytime">
+                                <label for="checkin">Check In</label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating date" id="date4" data-target-input="nearest">
+                                <input type="datetime-local" class="form-control" id="checkout" name="birthdaytime">
+                                <label for="checkin">Check Out</label>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <select class="form-select" id="select1">
+                                    <option value="1">Yetişkin 1</option>
+                                    <option value="2">Yetişkin 2</option>
+                                    <option value="3">Yetişkin 3</option>
+                                    <option value="4">Yetişkin 4</option>
+                                    <option value="5">Yetişkin 5</option>
+                                    <option value="6">Yetişkin 6</option>
+                                    <option value="7">Yetişkin 7</option>
+                                </select>
+                                <label for="select1">Yetişkin Sayısı</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <select class="form-select" id="select2">
+                                    <option value="0">Çocuk Yok</option>
+                                    <option value="1">Çocuk 1</option>
+                                    <option value="2">Çocuk 2</option>
+                                    <option value="3">Çocuk 3</option>
+                                    <option value="4">Çocuk 4</option>
+                                    <option value="5">Çocuk 5</option>
+                                    <option value="6">Çocuk 6</option>
+                                    <option value="7">Çocuk 7</option>
+                                </select>
+                                <label for="select2">Çocuk Sayısı</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <select class="form-select" id="select3">
+                                    <option value="1">1 Kişilik Oda</option>
+                                    <option value="2">2 Kişilik Oda</option>
+                                    <option value="3">3 Kişilik Oda</option>
+                                    <option value="4">4 Kişilik Oda</option>
+                                    <option value="5">5 Kişilik Oda</option>
+
+                                </select>
+                                <label for="select3">Oda Adedi</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Özel isteklerinizi burdan iletebilirsiniz" id="message" style="height: 100px"></textarea>
+                                <label for="message">Özel İstek</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" id="btnadd" type="submit">Rezervasyon Oluştur</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Scriptler-->
+<!-- Moment.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+<!-- Bootstrap JS ve Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap DateTimePicker CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+<!-- Bootstrap DateTimePicker JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<!-- Bildirim paneli için -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.js"></script>
+<!-- Bildirim paneli için -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    //birinci datetimepicker'a göre ikinci datetimepicker tarih seçebiliyor
+    $(function () {
+        var checkin = document.getElementById("checkin");
+        var checkout = document.getElementById("checkout");
+        checkin.addEventListener("input", function () {
+            checkout.min = checkin.value;
+            if (checkout.value < checkin.value) {
+                checkout.value = checkin.value;
+            }
+        });
+    });
+    //Ekleme kısmı
+    $("#btnadd").click(function () {
+        var Name = $("#name").val().trim();
+        var Mail = $("#email").val().trim();
+        var CheckIn = $("#checkin").val().trim();
+        var CheckOut = $("#checkout").val().trim();
+        var AdultCount = $("#select1").val().trim();
+        var ChildCount = $("#select2").val().trim();
+        var RoomCount = $("#select3").val().trim();
+        var SpecialRequest = $("#message").val().trim();
+        if (Name === "" || Mail === "") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata',
+                text: 'Lütfen formu eksiksiz doldurun.'
+            });
+            return;
+        }
+        var values = {
+            Name: Name,
+            Mail: Mail,
+            CheckIn: CheckIn,
+            CheckOut: CheckOut,
+            AdultCount: AdultCount,
+            ChildCount: ChildCount,
+            RoomCount: RoomCount,
+            SpecialRequest: SpecialRequest,
+        };
+        $.ajax({
+            type: "POST",
+            url: "/Booking/AddBooking/",
+            data: values,
+            success: function (fnk) {
+                var result = jQuery.parseJSON(fnk);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Başarılı',
+                    text: result.Name + ', tebrikler! Rezervasyonunuz başarıyla tarafımıza ulaştı. Onay sürecinden sonra sizinle tekrar görüşeceğiz. Lütfen mailinizi kontrol etmeyi unutmayın.'
+                });
+                $("#name").val("");
+                $("#email").val("");
+                $("#select1").val("");
+                $("#select2").val("");
+                $("#select3").val("");
+                $("#message").val("");
+            }
+        });
+    });
+</script>

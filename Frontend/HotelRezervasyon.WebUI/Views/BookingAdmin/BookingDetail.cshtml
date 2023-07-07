@@ -1,0 +1,155 @@
+﻿@model UpdateBookingDto
+@{
+    ViewData["Title"] = "BookingDetail";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h4>Rezervasyon Güncelle</h4>
+
+<input type="text" class="form-control" asp-for="BookingID" id="BookingID" readonly="readonly" />
+<label>İsim & Soyisim</label>
+<input type="text" readonly asp-for="Name" id="name" class="form-control" />
+<label>Mail Adresi</label>
+<input type="text" readonly asp-for="Mail" id="mail" class="form-control" />
+<label>Giriş Tarihi</label>
+<input type="text" readonly asp-for="CheckIn" id="checkin" class="form-control" />
+<label>Çıkış Tarihi</label>
+<input type="text" readonly asp-for="CheckOut" id="checkout" class="form-control" />
+<label>Yetişkin Sayısı</label>
+<input type="text" readonly asp-for="AdultCount" id="adultcount" class="form-control" />
+<label>Çocuk Sayısı</label>
+<input type="text" readonly asp-for="ChildCount" id="childcount" class="form-control" />
+<label>Oda Sayısı</label>
+<input type="text" readonly asp-for="RoomCount" id="roomcount" class="form-control" />
+<label>Özel İstek</label>
+<textarea readonly asp-for="SpecialRequest" id="specialrequest" class="form-control"></textarea>
+<br />
+<br />
+
+<button type="button" class="btn btn-outline-primary" id="btnupdate">Rezervasyonu Onayla</button>
+<button type="button" class="btn btn-outline-warning" id="btncancel">Rezervasyonu iptal et</button>
+<button type="button" class="btn btn-outline-dark" id="btnwait">Rezervasyonu Beklet</button>
+ 
+
+
+
+
+
+
+<!--Scriptler-->
+<!-- Moment.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+<!-- Bootstrap JS ve Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap DateTimePicker CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+<!-- Bootstrap DateTimePicker JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<!-- Bildirim paneli için -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+<script>
+    // Onaylandığında olacaklar
+    $("#btnupdate").click(function () {
+        let values = {
+            BookingID: $("#BookingID").val(),
+            Name: $("#name").val(),
+            Mail: $("#mail").val(),
+            CheckIn: $("#checkin").val(),
+            CheckOut: $("#checkout").val(),
+            AdultCount: $("#adultcount").val(),
+            ChildCount: $("#childcount").val(),
+            RoomCount: $("#roomcount").val(),
+            SpecialRequest: $("#specialrequest").val(),
+            Status: "Onaylandı"
+        };
+        $.ajax({
+            type: "POST",
+            url: "/BookingAdmin/Reservationstatus",
+            data: values,
+            success: function (fnk5) {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Rezervasyon Durumu',
+                    text: 'Rezervasyon Onaylandı.'
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("Hata: " + errorThrown);
+            }
+        });
+    });
+
+
+    //iptal edildiğinde olacaklar
+    $("#btncancel").click(function () {
+        let values = {
+            BookingID: $("#BookingID").val(),
+            Name: $("#name").val(),
+            Mail: $("#mail").val(),
+            CheckIn: $("#checkin").val(),
+            CheckOut: $("#checkout").val(),
+            AdultCount: $("#adultcount").val(),
+            ChildCount: $("#childcount").val(),
+            RoomCount: $("#roomcount").val(),
+            SpecialRequest: $("#specialrequest").val(),
+            Status: "iptal edildi"
+        };
+        $.ajax({
+            type: "POST",
+            url: "/BookingAdmin/Reservationstatus",
+            data: values,
+            success: function (fnk5) {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Rezervasyon Durumu',
+                    text: 'Rezervasyon iptal edildi.'
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("Hata: " + errorThrown);
+            }
+        });
+    });
+
+    //Beklemeye alındıgında olacaklar
+    $("#btnwait").click(function () {
+        let values = {
+            BookingID: $("#BookingID").val(),
+            Name: $("#name").val(),
+            Mail: $("#mail").val(),
+            CheckIn: $("#checkin").val(),
+            CheckOut: $("#checkout").val(),
+            AdultCount: $("#adultcount").val(),
+            ChildCount: $("#childcount").val(),
+            RoomCount: $("#roomcount").val(),
+            SpecialRequest: $("#specialrequest").val(),
+            Status: "Beklemede"
+        };
+        $.ajax({
+            type: "POST",
+            url: "/BookingAdmin/Reservationstatus",
+            data: values,
+            success: function (fnk5) {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Rezervasyon Durumu',
+                    text: 'Rezervasyon Beklemeye alındı.'
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("Hata: " + errorThrown);
+            }
+        });
+    });
+</script>
+
+

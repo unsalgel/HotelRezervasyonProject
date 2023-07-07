@@ -1,0 +1,54 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<!--Head Kısmı Başlangıç-->
+@await Component.InvokeAsync("_HeadComponent")
+<!--Head Kısmı Bitiş-->
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        @await Component.InvokeAsync("_SpinnerComponent")
+        <!-- Spinner End -->
+        <!-- Header Menü Start -->
+        @await Component.InvokeAsync("_NavbarComponent")
+        <!-- Header Menü End -->
+        <!-- Carousel Start -->
+        @await Component.InvokeAsync("_SliderComponent")
+        <!-- Carousel End -->
+        <!-- Rezervasyon Start -->
+@*        @await Component.InvokeAsync("_ReservationComponent")*@
+        <!-- Rezervasyon End -->
+        <!-- About Start -->
+        @await Component.InvokeAsync("_AboutUsComponent")
+        <!-- About End -->
+        <!-- Room Start -->
+        @await Component.InvokeAsync("_OurRoomsComponent")
+        <!-- Room End -->
+        <!-- Trailer Video Start -->
+        @await Component.InvokeAsync("_TrailerComponent")
+        <!-- Trailer Video Stop -->
+        <!-- Service Start -->
+        @await Component.InvokeAsync("_ServiceComponent")
+        <!-- Service End -->
+        <!-- Testimonial Start -->
+        @await Component.InvokeAsync("_TestimonialComponent")
+        <!-- Testimonial End -->
+        <!-- Team Start -->
+        @await Component.InvokeAsync("_TeamComponent")
+        <!-- Team End -->
+        <!-- Subscribe Start -->
+        @await Html.PartialAsync("/Views/Default/_SubscribePartial.cshtml")
+ 
+        @*@await Component.InvokeAsync("_SubscribeComponent")*@
+        <!-- Subscribe Start -->
+        <!-- Footer Start -->
+        @await Component.InvokeAsync("_FooterComponent")
+        <!-- Footer End -->
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+    @await Component.InvokeAsync("_ScriptComponent")
+</body>
+</html>

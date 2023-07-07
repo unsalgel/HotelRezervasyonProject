@@ -1,0 +1,56 @@
+﻿@model UpdateAboutDto
+@{
+    ViewData["Title"] = "AboutDetail";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+ 
+
+<h4>Hakkımızda Detayları</h4>
+<label>Başlık 1</label>
+<input type="text"  asp-for="Title1" id="Title1" class="form-control" />
+<label>Başlık 2</label>
+<input type="text"  asp-for="Title2" id="Title2" class="form-control" />
+<label>İçerik</label>
+<textarea  asp-for="Content" id="Content" class="form-control"></textarea>
+<label>Oda Sayısı</label>
+<input type="number"  asp-for="RoomCount" id="RoomCount" min="1" max="999999" class="form-control" />
+<label>Personel Sayısı</label>
+<input type="number"  asp-for="StaffCount" id="StaffCount" min="1" max="999999" class="form-control" />
+<label>Müşteri Sayısı</label>
+<input type="number"  asp-for="CustomerCount" id="CustomerCount" min="1" max="999999" class="form-control" />
+<br />
+<br />
+
+<button type="button" class="btn btn-outline-primary" id="btnupdate">Hakkımızda Güncelle</button>
+<!-- Bildirim paneli için -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#btnupdate").click(function () {
+        let values = {
+            ID:1,
+            Title1: $("#Title1").val(),
+            Title2: $("#Title2").val(),
+            Content: $("#Content").val(),
+            RoomCount: $("#RoomCount").val(),
+            StaffCount: $("#StaffCount").val(),
+            CustomerCount: $("#CustomerCount").val(),
+        };
+        $.ajax({
+            type: "POST",
+            url: "/AdminAbout/UpdateAbout",
+            data: values,
+            success: function (fnk5) {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Bilgilendirme',
+                    text: 'Hakkımızda Başarıyla Güncellendi !'
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("Hata: " + errorThrown);
+            }
+        });
+    });
+</script>

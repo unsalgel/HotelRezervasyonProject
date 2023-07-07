@@ -1,0 +1,26 @@
+﻿@model UpdateServiceDto
+@{
+    ViewData["Title"] = "UpdateService";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h4>Hizmet Güncelleme Paneli</h4>
+
+<form method="post" action="/Service/AddService">
+    <input type="text" hidden asp-for="ServiceID" />
+    <div class="modal-body">
+        <label>Hizmet Icon</label>
+        <input type="text" placeholder="Hizmet icon linki giriniz..." asp-for="ServiceIcon" class="form-control" />
+        <span asp-validation-for="ServiceIcon" class="text-danger"></span>
+        <br />
+        <label>Hizmet Başlığı</label>
+        <input type="text" asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+        <br />
+        <label>Açıklama</label>
+        <textarea type="text" asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+        <br />
+        <button class="btn btn-primary">Kaydet</button>
+    </div>
+</form>

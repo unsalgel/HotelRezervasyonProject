@@ -1,0 +1,80 @@
+﻿@model string
+@{
+    Layout = null;
+
+}
+<style>
+    .message-content {
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #F4F4F4;
+        max-width: 80%;
+    }
+
+        .message-content p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Chat Template</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <!-- Custom CSS -->
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="chat-box">
+                    <div class="chat-header">
+                        <h4>UNSGPT Chatbot ile Sohbet Et</h4>
+                    </div>
+                    <div class="chat-body">
+                        <div class="message-list">
+                            <div class="message-item message-from">
+                                <div class="message-content">
+                                    @if (!string.IsNullOrEmpty(ViewBag.Answer))
+                                    {
+                                        <p>@ViewBag.Answer</p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <form method="post">
+                        <div class="chat-footer">
+
+                            <div class="input-group">
+
+                                <input type="text" class="form-control" name="question" id="question" />
+                                <div class="input-group-append">
+                              @*      <button class="btn btn-primary" type="button"><i class="fa fa-paper-plane"></i></button>*@
+                                    <button class="btn btn-primary"><i class="fa fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

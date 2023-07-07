@@ -1,0 +1,20 @@
+﻿@model TestimonialViewModel
+@{
+    ViewData["Title"] = "UpdateTestimonial";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h4>Referans Güncelleme Paneli</h4>
+@using (Html.BeginForm("UpdateTestimonial", "Testimonial", FormMethod.Post))
+{
+    @Html.HiddenFor(p=>p.TestimonialID)
+    <label>Adı & Soyadı</label>
+    @Html.TextBoxFor(p=>p.Name,new{@class="form-control"})
+    <label>Ünvan</label>
+    @Html.TextBoxFor(p=>p.Title,new{@class="form-control"})
+    <label>İçerik</label>
+    @Html.TextAreaFor(p=>p.Description,5,5,new{@class="form-control"})
+    <br />
+    <button class="btn btn-outline-primary">Güncelle</button>
+}
+

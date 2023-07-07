@@ -1,0 +1,23 @@
+﻿@model StaffViewModel
+@{
+    ViewData["Title"] = "UpdateStaff";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h4>Personel Güncelleme Paneli</h4>
+@using (Html.BeginForm("UpdateStaff", "Staff", FormMethod.Post))
+{
+    @Html.HiddenFor(p=>p.StaffID)
+    <label>Adı & Soyadı</label>
+    @Html.TextBoxFor(p=>p.Name,new{@class="form-control"})
+    <label>Ünvan</label>
+    @Html.TextBoxFor(p=>p.Title,new{@class="form-control"})
+    <label>Facebook URL</label>
+    @Html.TextBoxFor(p=>p.SocialMedia1,new{@class="form-control",@placeholder="www.facebook.com/hesapadi"})
+    <label>Twitter URL</label>
+    @Html.TextBoxFor(p=>p.SocialMedia2,new{@class="form-control",@placeholder="www.twitter.com/hesapadi"})
+    <label>Instagram URL</label>
+    @Html.TextBoxFor(p=>p.SocialMedia3,new{@class="form-control",@placeholder="www.twitter.com/hesapadi"})
+    <br />
+    <button class="btn btn-outline-primary">Güncelle</button>
+}
